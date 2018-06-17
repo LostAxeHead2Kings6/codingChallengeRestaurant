@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurants in NY</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Thai Restaurants</h1>
+    <ul id="list">List:
+    </ul>
+
+  <script>
+    let theList = querySelector('#list');
+
+    document.onload=
+      axios.get('https://data.cityofnewyork.us/resource/9w7m-hzhe.json')
+        .then((response)=>
+          let listContents = response.data.filter((ele) => return ele.grade === "A"));
+          let listContents = listContents.map((ele)=> return `<li>${ele.dba}, ${ele.grade}</li>`);
+          theList.innerHTML = listContents;
+        );
+
+  </script>
+  </body>
+</html>
